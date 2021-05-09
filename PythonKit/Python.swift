@@ -1383,7 +1383,7 @@ extension PythonObject : Sequence {
         
         public func next() -> PythonObject? {
             guard let result = PyIter_Next(self.pythonIterator.borrowedPyObject) else {
-                try! throwPythonErrorIfPresent()
+                try throwPythonErrorIfPresent()
                 return nil
             }
             return PythonObject(consuming: result)
